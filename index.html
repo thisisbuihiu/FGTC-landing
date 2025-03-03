@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FGTC Automations</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <!-- Custom CSS (if needed) -->
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    /* ---------------- Benefits Section Overlay ---------------- */
+    #benefits::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://media.istockphoto.com/id/1206796363/photo/ai-machine-learning-hands-of-robot-and-human-touching-on-big-data-network-connection.jpg?s=612x612&w=0&k=20&c=xIX5Bz7h50B83cCZG_gXkyZSOu-mG93DtOcNK7RNEAo=');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.2;
+      z-index: 1;
+    }
+
+    /* ---------------- Header Logo White ---------------- */
+    .logo-white {
+      filter: brightness(0) invert(1);
+    }
+
+    /* ---------------- Typewriter Effect ---------------- */
+    .typewriter {
+      overflow: hidden;
+      white-space: pre-wrap; /* Cho phép xuống dòng */
+      font-family: monospace;
+      display: block;
+    }
+    /* Pseudo-element caret luôn sát với chữ */
+    .typewriter::after {
+      content: "";
+      display: inline-block;
+      width: 0.15em;
+      background-color: #ffcc00;
+      margin-left: 2px;
+      animation: blink 1s steps(1) infinite;
+    }
+    @keyframes blink {
+      0% { opacity: 1; }
+      50% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    /* ---------------- Integration Slider (Continuous) ---------------- */
+    @keyframes continuousSlide {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+    #integration-slider .integration-track {
+      display: flex;
+      animation: continuousSlide 20s linear infinite;
+    }
+    .integration-item {
+      flex: 0 0 25%;
+      padding: 1rem;
+    }
+
+    /* ---------------- Testimonial Boxes ---------------- */
+    .testimonial-box {
+      height: 16rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    /* ---------------- Flip Card (Vertical: flip from top down) ---------------- */
+    .flip-card {
+      perspective: 1000px;
+      height: 300px;
+    }
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+      transform-origin: center;
+    }
+    .flip-card:hover .flip-card-inner {
+      transform: rotateX(180deg);
+    }
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+    }
+    .flip-card-back {
+      transform: rotateX(180deg);
+    }
+
+    /* ---------------- Pricing Button Hover ---------------- */
+    .pricing-btn:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-800 min-h-screen flex flex-col">
+  <!-- HEADER -->
+  <header class="bg-[#01274e] text-white py-4 shadow-md">
+    <div class="container mx-auto flex justify-between items-center px-4">
+      <a href="#" class="flex items-center space-x-4">
+        <img src="images/logo.svg" alt="FGTC Automations Logo" class="h-10 logo-white" />
+        <span class="text-2xl font-bold">FGTC Automations</span>
+      </a>
+      <nav class="hidden md:flex space-x-6 font-bold text-xl">
+        <a href="#about" class="hover:text-gray-100 transition duration-300">About Us</a>
+        <a href="#benefits" class="hover:text-gray-100 transition duration-300">Benefits</a>
+        <a href="#features" class="hover:text-gray-100 transition duration-300">Features</a>
+        <a href="#capabilities" class="hover:text-gray-100 transition duration-300">Capabilities</a>
+        <a href="#pricing" class="hover:text-gray-100 transition duration-300">Pricing</a>
+      </nav>
+      <div class="flex space-x-4">
+        <!-- Nút giỏ hàng: icon trắng, background trong suốt -->
+        <button class="bg-transparent text-white font-bold text-xl py-2 px-4 transition duration-300 hover:shadow-lg">
+          <i class="fas fa-shopping-cart"></i>
+        </button>
+        <!-- Nút Login -->
+        <button class="bg-white text-[#01274e] font-bold text-xl py-2 px-4 rounded-full transition duration-300 hover:shadow-lg">
+          Login
+        </button>
+        <button class="bg-[#ffcc00] text-[#01274e] font-bold text-xl py-2 px-4 rounded-full transition duration-300 hover:shadow-lg">
+          Sign Up
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="relative flex-grow">
+    <!-- HERO / BENEFITS SECTION (Full Screen) -->
+    <section id="benefits" class="min-h-screen flex flex-col justify-center text-center py-32 bg-[#01274e] text-white relative z-10 overflow-hidden">
+      <div class="container mx-auto px-4 relative" style="z-index:2;">
+        <!-- Typewriter effect: 2 dòng riêng biệt -->
+        <h1 id="headline" class="typewriter text-5xl md:text-6xl font-bold mb-6"></h1>
+        <p id="subheadline" class="typewriter text-xl mb-8 max-w-3xl mx-auto"></p>
+        <div class="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-6 mb-8">
+          <button class="pricing-btn bg-[#ffcc00] text-[#01274e] font-semibold py-3 px-8 rounded-full transition duration-300 hover:shadow-lg">
+            Learn More
+          </button>
+          <button class="pricing-btn bg-white text-[#01274e] font-semibold py-3 px-8 rounded-full transition duration-300 hover:shadow-lg">
+            Get Started
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT US SECTION (2 Columns, Centered) -->
+    <section id="about" class="py-32 bg-white text-gray-800 relative z-10">
+      <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-center">
+        <!-- Left: Text (normal style, CEO signature italic only) -->
+        <div class="md:w-1/2 text-center md:text-left max-w-md">
+          <h2 class="text-4xl font-bold mb-6">About FGTC Automations</h2>
+          <p class="text-xl mb-4">
+            Our mission is to empower businesses to embrace digital transformation by automating tedious tasks through intelligent AI and seamless integration with top-tier tools like Make.
+          </p>
+          <p class="text-xl mb-4">
+            We deliver comprehensive, scalable solutions that streamline workflows and drive innovation and growth.
+          </p>
+          <p class="text-xl italic">— Dirk De Vlaam, CEO, FGTC Automations</p>
+        </div>
+        <!-- Right: Image (cố định bên phải, với khoảng cách lớn) -->
+        <div class="md:w-1/2 mt-8 md:mt-0 flex justify-center">
+          <img src="https://media.istockphoto.com/id/1206796363/photo/ai-machine-learning-hands-of-robot-and-human-touching-on-big-data-network-connection.jpg?s=612x612&w=0&k=20&c=xIX5Bz7h50B83cCZG_gXkyZSOu-mG93DtOcNK7RNEAo=" alt="Automation Technology" class="rounded-lg shadow-lg ml-32" />
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES SECTION -->
+    <section id="features" class="py-32 bg-gray-50 text-gray-800 relative z-10">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-4xl font-bold mb-8">Why Choose FGTC?</h2>
+        <p class="text-xl text-gray-700 mb-10 max-w-2xl mx-auto">
+          Gain a competitive edge with our proven automation expertise, designed to boost productivity and drive growth.
+        </p>
+        <!-- Grid with 6 flip-cards (vertical flip from top down) -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+          <!-- Flip Card 1 -->
+          <div class="flip-card bg-white p-4 rounded-lg shadow-md">
+            <div class="flip-card-inner">
+              <div class="flip-card-front flex flex-col items-center justify-center p-4">
+                <i class="fas fa-cogs fa-3x text-[#01274e] mb-4"></i>
+                <h3 class="text-2xl font-bold mb-2">Seamless Integration</h3>
+                <p class="text-gray-700 text-center">Plug directly into your systems for immediate workflow enhancements.</p>
+              </div>
+              <div class="flip-card-back flex flex-col items-center justify-center p-4 bg-[#01274e] text-white">
+                <p class="text-xl text-center">Experience frictionless connectivity and effortless automation.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Flip Card 2 -->
+          <div class="flip-card bg-white p-4 rounded-lg shadow-md">
+            <div class="flip-card-inner">
+              <div class="flip-card-front flex flex-col items-center justify-center p-4">
+                <i class="fas fa-shield-alt fa-3x text-[#01274e] mb-4"></i>
+                <h3 class="text-2xl font-bold mb-2">Enhanced Security</h3>
+                <p class="text-gray-700 text-center">State-of-the-art security protocols protect your valuable data.</p>
+              </div>
+              <div class="flip-card-back flex flex-col items-center justify-center p-4 bg-[#01274e] text-white">
+                <p class="text-xl text-center">Robust measures that keep your information secure 24/7.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Flip Card 3 -->
+          <div class="flip-card bg-white p-4 rounded-lg shadow-md">
+            <div class="flip-card-inner">
+              <div class="flip-card-front flex flex-col items-center justify-center p-4">
+                <i class="fas fa-brain fa-3x text-[#01274e] mb-4"></i>
+                <h3 class="text-2xl font-bold mb-2">Intelligent Automation</h3>
+                <p class="text-gray-700 text-center">Custom AI-driven scenarios tailored to your business needs.</p>
+              </div>
+              <div class="flip-card-back flex flex-col items-center justify-center p-4 bg-[#01274e] text-white">
+                <p class="text-xl text-center">Innovate with smart solutions that adapt to your workflow.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Flip Card 4 -->
+          <div class="flip-card bg-white p-4 rounded-lg shadow-md">
+            <div class="flip-card-inner">
+              <div class="flip-card-front flex flex-col items-center justify-center p-4">
+                <i class="fas fa-chart-line fa-3x text-[#01274e] mb-4"></i>
+                <h3 class="text-2xl font-bold mb-2">Scalable Solutions</h3>
+                <p class="text-gray-700 text-center">Grow with solutions designed to expand with your business.</p>
+              </div>
+              <div class="flip-card-back flex flex-col items-center justify-center p-4 bg-[#01274e] text-white">
+                <p class="text-xl text-center">Adapt and scale seamlessly as your business evolves.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Flip Card 5 -->
+          <div class="flip-card bg-white p-4 rounded-lg shadow-md">
+            <div class="flip-card-inner">
+              <div class="flip-card-front flex flex-col items-center justify-center p-4">
+                <i class="fas fa-lightbulb fa-3x text-[#01274e] mb-4"></i>
+                <h3 class="text-2xl font-bold mb-2">Innovative Design</h3>
+                <p class="text-gray-700 text-center">Modern, cutting-edge designs that set you apart.</p>
+              </div>
+              <div class="flip-card-back flex flex-col items-center justify-center p-4 bg-[#01274e] text-white">
+                <p class="text-xl text-center">Stand out with sleek aesthetics and intuitive interfaces.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Flip Card 6 -->
+          <div class="flip-card bg-white p-4 rounded-lg shadow-md">
+            <div class="flip-card-inner">
+              <div class="flip-card-front flex flex-col items-center justify-center p-4">
+                <i class="fas fa-headset fa-3x text-[#01274e] mb-4"></i>
+                <h3 class="text-2xl font-bold mb-2">24/7 Support</h3>
+                <p class="text-gray-700 text-center">Expert support available around the clock.</p>
+              </div>
+              <div class="flip-card-back flex flex-col items-center justify-center p-4 bg-[#01274e] text-white">
+                <p class="text-xl text-center">Our team is here to help you anytime, every day.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AUTOMATION INTEGRATIONS SECTION (Continuous Sliding) -->
+    <section id="integrations" class="py-32 bg-gray-200 text-gray-800 relative z-10">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-4xl font-bold mb-8">Automation Integrations</h2>
+        <p class="text-xl text-gray-700 mb-10 max-w-2xl mx-auto">
+          We integrate with a wide array of tools to build powerful automation scenarios – from Make, Zapier, to custom APIs and more.
+        </p>
+        <div id="integration-slider" class="overflow-hidden relative">
+          <div class="integration-track flex">
+            <!-- 7 items duplicated for continuous effect -->
+            <div class="integration-item">
+              <img src="https://media.istockphoto.com/id/1206796363/photo/ai-machine-learning-hands-of-robot-and-human-touching-on-big-data-network-connection.jpg?s=612x612&w=0&k=20&c=xIX5Bz7h50B83cCZG_gXkyZSOu-mG93DtOcNK7RNEAo=" alt="Make" class="mx-auto" />
+            </div>
+            <div class="integration-item">
+              <img src="https://media.istockphoto.com/id/1206796363/photo/ai-machine-learning-hands-of-robot-and-human-touching-on-big-data-network-connection.jpg?s=612x612&w=0&k=20&c=xIX5Bz7h50B83cCZG_gXkyZSOu-mG93DtOcNK7RNEAo=" alt="Zapier" class="mx-auto" />
+            </div>
+            <div class="integration-item">
+              <img src="https://media.istockphoto.com/id/1206796363/photo/ai-machine-learning-hands-of-robot-and-human-touching-on-big-data-network-connection.jpg?s=612x612&w=0&k=20&c=xIX5Bz7h50B83cCZG_gXkyZSOu-mG93DtOcNK7RNEAo=" alt="Custom API" class="mx-auto" />
+            </div>
+            <div class="integration-item">
+              <img src="https://media.istockphoto.com/id/1206796363/photo/ai-machine-learning-hands-of-robot-and-human-touching-on-big-data-network-connection.jpg?s=612x612&w=0&k=20&c=xIX5Bz7h50B83cCZG_gXkyZSOu-mG93DtOcNK7RNEAo=" alt="IFTTT" class="mx-auto" />
+            </div>
+            <div class="integration-item">
+              <img src="https://media.istockphoto.com/id/1206796363/photo/ai-machine-learning-hands-of-robot-and-human-touching-on-big-data-network-connection.jpg?s=612x612&w=0&k=20&c=xIX5Bz7h50B83cCZG_gXkyZSOu-mG93DtOcNK7RNEAo=" alt="ToolX" class="mx-auto" />
+            </div>
+            <div class="integration-item">
+              <img src="https://media.istockphoto.com/id/1206796363/photo/ai-machine-learning-hands-of-robot-and-human-touching-on-big-data-network-connection.jpg?s=612x612&w=0&k=20&c=xIX5Bz7h50B83cCZG_gXkyZSOu-mG93DtOcNK7RNEAo=" alt="ToolY" class="mx-auto" />
+            </div>
+            <div class="integration-item">
+              <img src="https://media.istockphoto.com/id/1206796363/photo/ai-machine-learning-hands-of-robot-and-human-touching-on-big-data-network-connection.jpg?s=612x612&w=0&k=20&c=xIX5Bz7h50B83cCZG_gXkyZSOu-mG93DtOcNK7RNEAo=" alt="ToolZ" class="mx-auto" />
+            </div>
+            <!-- Duplicate list -->
+            <div class="integration-item">
+              <img src="https://media.istockphoto.com/id/1206796363/photo/ai-machine-learning-hands-of-robot-and-human-touching-on-big-data-network-connection.jpg?s=612x612&w=0&k=20&c=xIX5Bz7h50B83cCZG_gXkyZSOu-mG93DtOcNK7RNEAo=" alt="Make" class="mx-auto" />
+            </div>
+            <div class="integration-item">
+              <img src="https://media.istockphoto.com/id/1206796363/photo/ai-machine-learning-hands-of-robot-and-human-touching-on-big-data-network-connection.jpg?s=612x612&w=0&k=20&c=xIX5Bz7h50B83cCZG_gXkyZSOu-mG93DtOcNK7RNEAo=" alt="Zapier" class="mx-auto" />
+            </div>
+            <div class="integration-item">
+              <img src="https://media.istockphoto.com/id/1206796363/photo/ai-machine-learning-hands-of-robot-and-human-touching-on-big-data-network-connection.jpg?s=612x612&w=0&k=20&c=xIX5Bz7h50B83cCZG_gXkyZSOu-mG93DtOcNK7RNEAo=" alt="Custom API" class="mx-auto" />
+            </div>
+            <div class="integration-item">
+              <img src="https://media.istockphoto.com/id/1206796363/photo/ai-machine-learning-hands-of-robot-and-human-touching-on-big-data-network-connection.jpg?s=612x612&w=0&k=20&c=xIX5Bz7h50B83cCZG_gXkyZSOu-mG93DtOcNK7RNEAo=" alt="IFTTT" class="mx-auto" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CUSTOM AI AGENTS SECTION (Different background: white) -->
+    <section id="ai-agents" class="py-32 bg-white text-gray-800 relative z-10">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-4xl font-bold mb-8">Custom AI Agents</h2>
+        <p class="text-xl text-gray-700 mb-10 max-w-2xl mx-auto">
+          Stand out with our tailor–made AI Agents designed to perform specific tasks, streamline operations, and deliver exceptional results.
+        </p>
+        <img src="https://media.istockphoto.com/id/1206796363/photo/ai-machine-learning-hands-of-robot-and-human-touching-on-big-data-network-connection.jpg?s=612x612&w=0&k=20&c=xIX5Bz7h50B83cCZG_gXkyZSOu-mG93DtOcNK7RNEAo=" alt="AI Agents" class="mx-auto rounded-lg shadow-lg mb-8" />
+        <button class="bg-[#ffcc00] text-[#01274e] font-semibold py-3 px-8 rounded-full transition duration-300 hover:shadow-lg hover:-translate-y-1">
+          Discover Our AI Solutions
+        </button>
+      </div>
+    </section>
+
+    <!-- PRICING SECTION (bg gray-50) -->
+    <section id="pricing" class="py-32 bg-gray-50 text-gray-800 relative z-10">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-4xl font-bold mb-8">Pricing Plans</h2>
+        <p class="text-xl text-gray-700 mb-10 max-w-2xl mx-auto">
+          Choose the plan that fits your business needs and step into the future of automation.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+          <!-- Pricing Card 1 -->
+          <div class="bg-white p-8 rounded-lg shadow-md transition duration-300 hover:shadow-xl hover:-translate-y-1">
+            <h3 class="text-2xl font-bold mb-4">Basic Plan</h3>
+            <p class="mb-4 text-gray-700">For small businesses</p>
+            <ul class="mb-6 text-gray-700 space-y-2">
+              <li>100 Automation Runs</li>
+              <li>Email Support</li>
+              <li>Standard Tool Access</li>
+            </ul>
+            <button class="pricing-btn bg-[#01274e] text-[#ffcc00] py-3 px-8 rounded-full transition duration-300 hover:bg-[#011f3e] font-bold text-xl">
+              Buy Now
+            </button>
+          </div>
+          <!-- Pricing Card 2 (Most Popular) -->
+          <div class="bg-white p-8 rounded-lg shadow-md border-4 border-[#ffcc00] transition duration-300 hover:shadow-xl hover:-translate-y-1 relative">
+            <div class="absolute -top-3 bg-[#ffcc00] text-[#01274e] px-3 py-1 text-sm font-bold rounded-lg" style="right: -10px;">
+              Most Popular
+            </div>
+            <h3 class="text-2xl font-bold mb-4">Standard Plan</h3>
+            <p class="mb-4 text-gray-700">For growing businesses</p>
+            <ul class="mb-6 text-gray-700 space-y-2">
+              <li>500 Automation Runs</li>
+              <li>Priority Email Support</li>
+              <li>Advanced Tool Access</li>
+            </ul>
+            <button class="pricing-btn bg-[#01274e] text-[#ffcc00] py-3 px-8 rounded-full transition duration-300 hover:bg-[#011f3e] font-bold text-xl">
+              Buy Now
+            </button>
+          </div>
+          <!-- Pricing Card 3 (Premium Plan) -->
+          <div class="relative">
+            <!-- Badge Premium -->
+            <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 z-20 bg-yellow-500 text-white px-4 py-1 rounded-full shadow-lg flex items-center space-x-2">
+              <i class="fas fa-crown"></i>
+              <span>Premium</span>
+            </div>
+            <div class="bg-gradient-to-r from-gray-800 to-gray-900 text-white p-8 rounded-lg shadow-2xl transition duration-300 hover:scale-105 border-t-4 border-yellow-500 relative z-10">
+              <h3 class="text-2xl font-bold mb-4">Premium Plan</h3>
+              <p class="mb-4">For enterprise solutions</p>
+              <ul class="mb-6 space-y-2">
+                <li>Unlimited Automation Runs</li>
+                <li>24/7 Dedicated Support</li>
+                <li>Custom Integrations</li>
+              </ul>
+              <button class="pricing-btn bg-yellow-500 text-gray-900 py-3 px-8 rounded-full transition duration-300 hover:bg-yellow-600 font-bold text-xl">
+                Buy Now
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION (Carousel Slider: 3 uniform items, auto slide) -->
+    <section id="testimonials" class="py-32 bg-gray-100 text-gray-800 relative z-10">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-4xl font-bold mb-8">What Our Clients Say</h2>
+        <div id="testimonial-slider" class="overflow-hidden relative">
+          <div class="testimonial-track flex transition-transform duration-500" id="testimonial-track">
+            <!-- 7 testimonials (each box uniform) -->
+            <div class="testimonial-item flex-none w-1/3 p-4">
+              <div class="bg-white p-6 rounded shadow-md testimonial-box">
+                <p class="italic text-xl">"FGTC Automations transformed our workflow – efficiency soared!"</p>
+                <p class="font-bold mt-4 text-lg">- Alice</p>
+              </div>
+            </div>
+            <div class="testimonial-item flex-none w-1/3 p-4">
+              <div class="bg-white p-6 rounded shadow-md testimonial-box">
+                <p class="italic text-xl">"Their AI solutions brought us a new era of productivity."</p>
+                <p class="font-bold mt-4 text-lg">- Bob</p>
+              </div>
+            </div>
+            <div class="testimonial-item flex-none w-1/3 p-4">
+              <div class="bg-white p-6 rounded shadow-md testimonial-box">
+                <p class="italic text-xl">"Seamless integration and top-notch support!"</p>
+                <p class="font-bold mt-4 text-lg">- Carol</p>
+              </div>
+            </div>
+            <div class="testimonial-item flex-none w-1/3 p-4">
+              <div class="bg-white p-6 rounded shadow-md testimonial-box">
+                <p class="italic text-xl">"Our business efficiency improved dramatically."</p>
+                <p class="font-bold mt-4 text-lg">- David</p>
+              </div>
+            </div>
+            <div class="testimonial-item flex-none w-1/3 p-4">
+              <div class="bg-white p-6 rounded shadow-md testimonial-box">
+                <p class="italic text-xl">"Innovative solutions that truly deliver results."</p>
+                <p class="font-bold mt-4 text-lg">- Emma</p>
+              </div>
+            </div>
+            <div class="testimonial-item flex-none w-1/3 p-4">
+              <div class="bg-white p-6 rounded shadow-md testimonial-box">
+                <p class="italic text-xl">"Their automation expertise is unparalleled."</p>
+                <p class="font-bold mt-4 text-lg">- Frank</p>
+              </div>
+            </div>
+            <div class="testimonial-item flex-none w-1/3 p-4">
+              <div class="bg-white p-6 rounded shadow-md testimonial-box">
+                <p class="italic text-xl">"FGTC helped us achieve digital transformation seamlessly."</p>
+                <p class="font-bold mt-4 text-lg">- Grace</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER (Professional Web3 Layout) -->
+  <footer class="bg-gray-200 py-10">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <!-- Company Info -->
+        <div>
+          <a href="#" class="flex items-center space-x-4">
+            <img src="images/logo.svg" alt="FGTC Automations Logo" class="h-10" />
+            <span class="text-xl font-bold">FGTC Automations</span>
+          </a>
+          <p class="mt-4 text-gray-700">
+            FGTC Automations provides comprehensive automation solutions to streamline workflows and drive digital transformation.
+          </p>
+        </div>
+        <!-- Contact -->
+        <div>
+          <h4 class="font-bold text-gray-800 mb-2">Contact</h4>
+          <p class="text-gray-700">123 ABC Street, XYZ District, Ho Chi Minh City, Vietnam</p>
+          <p class="text-gray-700">Email: info@fgtcautomations.com</p>
+          <p class="text-gray-700">Phone: +65 8109 5789</p>
+        </div>
+        <!-- Quick Links -->
+        <div>
+          <h4 class="font-bold text-gray-800 mb-2">Quick Links</h4>
+          <ul class="text-gray-700 space-y-1">
+            <li><a href="#benefits" class="hover:underline">Benefits</a></li>
+            <li><a href="#features" class="hover:underline">Features</a></li>
+            <li><a href="#capabilities" class="hover:underline">Capabilities</a></li>
+            <li><a href="#pricing" class="hover:underline">Pricing</a></li>
+            <li><a href="#about" class="hover:underline">About Us</a></li>
+          </ul>
+        </div>
+        <!-- Follow Us -->
+        <div>
+          <h4 class="font-bold text-gray-800 mb-2">Follow Us</h4>
+          <div class="flex space-x-4">
+            <a href="https://www.facebook.com/profile.php?id=61570537667189" target="_blank" class="text-[#01274e] hover:text-[#01274e] transition duration-300">
+              <i class="fab fa-facebook fa-2x"></i>
+            </a>
+            <a href="https://www.linkedin.com/company/fgtc-automations/" target="_blank" class="text-[#01274e] hover:text-[#01274e] transition duration-300">
+              <i class="fab fa-linkedin fa-2x"></i>
+            </a>
+            <a href="https://www.instagram.com/fgtcautomations/" target="_blank" class="text-[#01274e] hover:text-[#01274e] transition duration-300">
+              <i class="fab fa-instagram fa-2x"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="mt-6 border-t border-gray-300 pt-4 text-center">
+        <p class="text-sm text-gray-700">© 2025 FGTC Automations. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script>
+    // Typewriter effect: gõ từng dòng riêng biệt và giữ lại caret luôn sát phần chữ
+    document.addEventListener("DOMContentLoaded", function () {
+      const headline = document.getElementById("headline");
+      const subheadline = document.getElementById("subheadline");
+      const text1 = "Revolutionize Your Workflow";
+      const text2 = "FGTC Automations delivers next–gen AI-powered automation using Make and other premium tools to supercharge your business.";
+      const speed1 = 100; // tốc độ gõ cho headline
+      const speed2 = 50;  // tốc độ gõ cho subheadline
+      
+      function typeText(element, text, speed, callback) {
+        let index = 0;
+        const interval = setInterval(() => {
+          element.textContent = text.substring(0, index + 1);
+          index++;
+          if (index === text.length) {
+            clearInterval(interval);
+            if (callback) callback();
+          }
+        }, speed);
+      }
+      
+      // Gõ đồng thời 2 dòng (có thể thay callback nếu muốn gõ tuần tự)
+      typeText(headline, text1, speed1);
+      typeText(subheadline, text2, speed2);
+    });
+
+    // Testimonials slider: show 3 items at a time and slide left by one item every 4 seconds.
+    document.addEventListener("DOMContentLoaded", function () {
+      const sliderTrack = document.getElementById("testimonial-track");
+      const testimonialItems = document.querySelectorAll(".testimonial-item");
+      const total = testimonialItems.length;
+      const visibleCount = 3;
+      let currentIndex = 0;
+      setInterval(() => {
+        currentIndex++;
+        sliderTrack.style.transform = `translateX(-${(currentIndex * 33.33)}%)`;
+        if (currentIndex > total - visibleCount) {
+          setTimeout(() => {
+            sliderTrack.style.transition = "none";
+            sliderTrack.style.transform = "translateX(0)";
+            currentIndex = 0;
+            sliderTrack.offsetHeight; // trigger reflow
+            sliderTrack.style.transition = "transform 0.5s ease-in-out";
+          }, 500);
+        }
+      }, 4000);
+    });
+  </script>
+  <script src="js/scripts.js"></script>
+</body>
+</html>
